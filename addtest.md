@@ -1,4 +1,0 @@
-# DevOps-Study
-aaaaaaaaaaaaaaaaaaaaaaa
-bbbbbbbbbbbbbbbbbb
-cccccccccccccccccccccc
