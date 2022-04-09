@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           count=$(cat README.md | wc -l)
-          Therest=$(($count%2))
+          Therest=$(expr $count % 2)
              if [ $Therest = 0]
               then
                 echo "success"
