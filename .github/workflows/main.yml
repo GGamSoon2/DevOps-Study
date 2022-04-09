@@ -29,12 +29,12 @@ jobs:
       - name: Run a one-line script
         shell: bash
         run: |
-          linecount=$(cat README.md | wc -l)
-          Therest='expr $linecout % 2'
+          count=$(cat README.md | wc -l)
+          Therest=$(($count%2))
              if [ $Therest = 0]
               then
                 echo "success"
               else
-                return 'failure()'
+                return `failure()`
              fi
              done
