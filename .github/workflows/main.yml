@@ -31,4 +31,4 @@ jobs:
         run: |
           count=$(cat README.md | sed '/^$/d' | wc -l)
           a=$(($count / 2))
-          echo a$
+          echo $a
