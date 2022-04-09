@@ -29,15 +29,12 @@ jobs:
       - name: Run a one-line script
         shell: bash
         run: |
-          count=$(cat README.md | wc -l)
-
-      - name: Run a two-line script
-        shell: bash
-        run: |
-             if [ $count = 0]
+          count=$(cat README.md | sed '/^$/d' | wc -l)
+          a=$(($count / 2))
+             if [[ $a = 0 ]]
               then
                 echo "success"
               else
-                return `failure()`
+                exit 1
              fi
              done
