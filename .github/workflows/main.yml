@@ -27,8 +27,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: linecount=$(cat README.md | wc -l)
-             Therest='expr $linecout % 2'
+        shell: bash
+        run: linecount=$(cat README.md | wc -l);
+             Therest='expr $linecout % 2';
              if [ $Therest = 0]
               then
                 echo "success"
