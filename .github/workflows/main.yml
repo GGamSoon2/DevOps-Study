@@ -30,12 +30,11 @@ jobs:
         shell: bash
         run: |
           count=$(cat README.md | sed '/^$/d' | wc -l)
-          a=$(($count % 2))
-          echo $a
-            if [ $a = "0" ]
+          Therest=$(($count % 2))
+          echo "나머지:" $Therest
+            if [ $Therest = "0" ]
                 then
                       echo "Success"
                 else
                       exit 1
             fi
-            done
