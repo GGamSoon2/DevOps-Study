@@ -15,7 +15,7 @@ jobs:
          Therest=$((count$ % 2))
          echo "라인수:" $count
          echo "나머지:" $Therest
-             if [ $Thereset = 0 ]
+             if [ $Thereset = "0" ]
               then
                 echo "success"
               else
