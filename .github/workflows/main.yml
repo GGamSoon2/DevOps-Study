@@ -31,6 +31,7 @@ jobs:
         run: |
           count=$(cat README.md | sed '/^$/d' | wc -l)
           Therest=$(($count % 2))
+          echo "라인수:" $count
           echo "나머지:" $Therest
             if [ $Therest = "0" ]
                 then
