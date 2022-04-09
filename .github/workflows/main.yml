@@ -32,3 +32,10 @@ jobs:
           count=$(cat README.md | sed '/^$/d' | wc -l)
           a=$(($count % 2))
           echo $a
+            if [ $a = "0" ]
+                then
+                      echo "Success"
+                else
+                      exit 1
+            fi
+            done
