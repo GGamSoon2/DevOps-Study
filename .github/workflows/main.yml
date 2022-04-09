@@ -34,7 +34,6 @@ jobs:
       - name: Run a two-line script
         shell: bash
         run: |
-          count=$(cat README.md | wc -l)
              if [ $count = 0]
               then
                 echo "success"
