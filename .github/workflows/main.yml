@@ -12,7 +12,7 @@ jobs:
         shell: bash
         run: |
          count=$(cat README.md | sed '/^$/d' | wc -l)
-         Therest=$((count$ % 2))
+         Therest=$(($count % 2))
          echo "라인수:" $count
          echo "나머지:" $Therest
              if [ $Thereset = "0" ]
