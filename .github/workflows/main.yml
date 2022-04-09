@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Study_Action
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        shell: bash
+        run: |
+         count=$(cat README.md | sed '/^$/d' | wc -l)
+         Therest=$((count$ % 2))
+         echo "라인수:" $count
+         echo "나머지:" $Therest
+             if [ $Thereset = 0 ]
+              then
+                echo "success"
+              else
+                exit 1
+             fi
+             done
