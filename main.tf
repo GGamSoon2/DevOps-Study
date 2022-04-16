@@ -17,10 +17,29 @@ terraform {
   }
 }
 
+resource "aws_vpc" "my-private-vpc-01" {
+  cidr_block           = "10.255.0.0/16" 
+  enable_dns_hostnames = false 
+
+  tags = {
+    Name    = "private_vpc"
+  }
+}
+
+resource "aws_subnet" "my-private-subnet-01" {
+  vpc_id                  = aws_vpc.my-private-vpc-01.id
+  cidr_block              = "10.255.10.0/24"
+  availability_zone       = "ap-northeast-2a" 
+
+  tags = {
+    Name = "private_subnet"
+  }
+}
+
 resource "aws_security_group" "default_in_allow_ssh" {
   name        = "allow_ssh"
   description = "Allow ssh inbound traffic"
-  vpc_id      = "vpc-07dea6e36a1320411"
+  vpc_id      = aws_vpc.my-private-vpc-01.id 
 
   ingress {
     from_port   = 22
@@ -48,7 +67,9 @@ provider "aws" {
 resource "aws_instance" "terrafrom-ec2" {
   ami                         = "ami-0ed11f3863410c386"
   instance_type               = "t2.micro"
-  subnet_id                   = "subnet-0999184b37219db7d"
-  associate_public_ip_address = "true"
-  security_groups             = ["sg-078cf2eafc71b9688"]
+  subnet_id                   = aws_subnet.my-private-subnet-01.id 
+  security_groups             = [aws_security_group.default_in_allow_ssh.id]
+  tags 			      = {
+    Name = "Terraform-aws-ec2"
+  }
 }
