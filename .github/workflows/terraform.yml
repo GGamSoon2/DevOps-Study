@@ -31,6 +31,7 @@ on:
       id: plan
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
+      continue-on-error: true
       
     - name: Update Pull Request
       uses: actions/github-script@6
