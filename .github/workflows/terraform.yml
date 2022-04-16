@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: Terraform
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
   pull_request:
   jobs:
   terraform:
-    name: 'Terraform'
+    name: Terraform
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -17,23 +17,23 @@ on:
       # terraform_version: 0.13.0
       cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     - name: Terraform Format
-      id: fmt
+        id: fmt
       run: terraform fmt -check
     - name: Terraform Init
-      id: init
+        id: init
       run: terraform init
     - name: Terraform Validate
-      id: validate
-      run: terraform validate -no-color
+        id: validate
+       run: terraform validate -no-color
     - name: Terraform Plan
-      id: plan
-      if: github.event_name == 'pull_request'
-      run: terraform plan -no-color -input=false
-      continue-on-error: true
+        id: plan
+        if: github.event_name == 'pull_request'
+       run: terraform plan -no-color -input=false
+       ontinue-on-error: true
     - name: Update Pull Request
       uses: actions/github-script@6
-      if: github.event_name == 'pull_request'
-      env:
+        if: github.event_name == 'pull_request'
+       env:
       PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
       with:
       github-token: ${{ secrets.GITHUB_TOKEN }}
