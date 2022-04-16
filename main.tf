@@ -9,7 +9,7 @@ terraform {
   }
 
   cloud {
-    organization = "<ggamsoon2>"
+    organization = "ggamsoon2"
 
     workspaces {
       name = "tf-aws-ec2-git-action"
