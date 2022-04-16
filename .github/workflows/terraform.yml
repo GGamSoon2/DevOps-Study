@@ -33,7 +33,7 @@ on:
       - name: Terraform Plan
         id: terraform-plan
         uses: rewindio/terraform-github-actions@master
-        
+  
       - name: Update Pull Request
         uses: actions/github-script@6
         if: github.event_name == 'pull_request'
