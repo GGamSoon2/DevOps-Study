@@ -33,9 +33,11 @@ jobs:
         run: terraform validate -no-color
       
       - name: Terraform Plan
-        id: terraform-plan
-        uses: rewindio/terraform-github-actions@master
-  
+        id: plan
+        if: github.event_name == 'pull_request'
+        run: terraform plan -no-color -input=false
+        continue-on-error: true  
+        
       - name: Update Pull Request
         uses: actions/github-script@6
         if: github.event_name == 'pull_request'
