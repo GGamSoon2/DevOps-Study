@@ -9,7 +9,7 @@ form {
   }
 
   cloud {
-    organization = "REPLACE_ME"
+    organization = "ggamsoon2"
 
     workspaces {
       name = "tf-aws-ec2-git-action"
